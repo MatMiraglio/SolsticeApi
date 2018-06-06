@@ -20,17 +20,24 @@ namespace SolsticeApi.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        public IQueryable<Contact> GetAllContacts()
+        public IActionResult GetAllContacts()
         {
-            return repository.GetContacts.OrderBy(p => p.ID);
+            var contacts = repository.GetContacts.OrderBy(p => p.ID);
+
+            return new OkObjectResult(contacts);
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public IQueryable<Contact> GetContactById(int id)
+        public IActionResult GetContactById(int id)
         {
-            return repository.GetContacts.Where(p => p.ID == id);
+            var contact = repository.GetContacts.Where(p => p.ID == id);
+
+            return Ok(contact);
         }
+
+
+        
 
         // POST api/<controller>
         [HttpPost]
