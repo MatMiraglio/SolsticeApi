@@ -9,7 +9,9 @@ namespace SolsticeApi.Repositories
     public interface IContactRepository
     {
         IQueryable<Contact> GetContacts { get; }
+        Contact Find(int id);
         Task<int> AddContact(Contact newContact);
         void DeleteContact(Contact contact);
+        Task<Contact> UpdateContact(Contact contactToUpdate);
     }
 }

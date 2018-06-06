@@ -18,7 +18,6 @@ namespace SolsticeApi.Controllers
             repository = repo;
         }
 
-
         // GET: api/<controller>
         [HttpGet]
         public IQueryable<Contact> GetAllContacts()
@@ -35,7 +34,7 @@ namespace SolsticeApi.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]Contact newContact)
+        public async Task<IActionResult> CreateContact([FromBody]Contact newContact)
         {
             if (newContact == null)
             {
@@ -47,39 +46,21 @@ namespace SolsticeApi.Controllers
         }
 
         // PUT api/<controller>/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Put(int id, [FromBody]Contact contact)
-        //{
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateContact(int id, [FromBody]Contact contact)
+        {
+            var existingContact = repository.Find(id);
+            if (existingContact == null)
+            {
+                return new NotFoundResult();
+            }
 
-            //if (id != contact.ID)
-            //{
-            //    return BadRequest();
-            //}
+            contact.ID = existingContact.ID;
 
-            //_context.Entry(contact).State = EntityState.Modified;
+            contact = await repository.UpdateContact(contact);
 
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!ContactExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            //return NoContent();
-        //}
+            return Ok(contact);
+        }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
