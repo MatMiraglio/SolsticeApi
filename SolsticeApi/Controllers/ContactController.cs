@@ -36,8 +36,23 @@ namespace SolsticeApi.Controllers
             return Ok(contact);
         }
 
+        [HttpGet("phone/{phoneNumber}")]
+        public IActionResult GetContactByPhoneNumer(string phoneNumber)
+        {
+            if (phoneNumber == null)
+            {
+                return BadRequest();
+            }
+            var contact  = repository.GetContacts.Single(p => p.PhoneNumberHome == phoneNumber || 
+                p.PhoneNumberWork == phoneNumber);
 
-        
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(contact);
+        }
 
         // POST api/<controller>
         [HttpPost]
