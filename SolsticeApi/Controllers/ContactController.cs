@@ -43,43 +43,43 @@ namespace SolsticeApi.Controllers
             }
 
             int newContactID = await repository.AddContact(newContact);
-            return CreatedAtRoute("GetContactById", new { Controller = "Contacts", id = newContactID }, newContact);
+            return CreatedAtAction("GetContactById", new { id = newContactID }, newContact);
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody]Contact contact)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Put(int id, [FromBody]Contact contact)
+        //{
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            if (id != contact.ID)
-            {
-                return BadRequest();
-            }
+            //if (id != contact.ID)
+            //{
+            //    return BadRequest();
+            //}
 
-            _context.Entry(contact).State = EntityState.Modified;
+            //_context.Entry(contact).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ContactExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!ContactExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
-            return NoContent();
-        }
+            //return NoContent();
+        //}
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
