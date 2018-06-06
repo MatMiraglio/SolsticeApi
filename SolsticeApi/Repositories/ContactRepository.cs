@@ -17,5 +17,18 @@ namespace SolsticeApi.Repositories
         }
 
         public IQueryable<Contact> GetContacts => context.Contacts;
+        public async Task<int> AddContact(Contact newContact)
+        {
+
+            context.Contacts.AddRange(newContact);
+            await context.SaveChangesAsync();
+
+            return newContact.ID;
+        }
+        public void DeleteContact(Contact contact)
+        {
+            context.Remove(contact);
+            context.SaveChanges();
+        }
     }
 }
