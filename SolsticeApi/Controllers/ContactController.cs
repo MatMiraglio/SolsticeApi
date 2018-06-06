@@ -36,6 +36,7 @@ namespace SolsticeApi.Controllers
             return Ok(contact);
         }
 
+        // GET api/<controller>/phone/11 9 1234 111
         [HttpGet("phone/{phoneNumber}")]
         public IActionResult GetContactByPhoneNumer(string phoneNumber)
         {
@@ -52,6 +53,20 @@ namespace SolsticeApi.Controllers
             }
 
             return Ok(contact);
+        }
+
+        // GET api/<controller>/location/New York
+        [HttpGet("location/{address}")]
+        public IActionResult GetContactsByAddLocation(string address)
+        {
+            if (address == null)
+            {
+                return BadRequest();
+            }
+
+            var contacts = repository.GetContacts.Where(p => p.Address.Contains(address));
+
+            return Ok(contacts);
         }
 
         // POST api/<controller>
