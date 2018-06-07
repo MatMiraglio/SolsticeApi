@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SolsticeApi.DbContexts;
 using SolsticeApi.Models;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Http;
 
 namespace SolsticeApi
 {
@@ -34,6 +36,12 @@ namespace SolsticeApi
             services.AddSingleton<IContactRepository, ContactRepository>();
 
             services.AddMvc();
+            services
+                .AddProjectCommands()
+                // Add useful interface for accessing the ActionContext outside a controller.
+                .AddSingleton<IActionContextAccessor, ActionContextAccessor>()
+                // Add useful interface for accessing the HttpContext outside a controller.
+                .AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

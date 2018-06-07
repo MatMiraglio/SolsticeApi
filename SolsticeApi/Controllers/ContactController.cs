@@ -5,27 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SolsticeApi.Models;
 using SolsticeApi.Repositories;
+using SolsticeApi.Commands.ContactCommands;
 
 namespace SolsticeApi.Controllers
 {
     [Route("api/[controller]")]
     public class ContactController : ControllerBase
     {
-        private IContactRepository repository;
+        private readonly IContactRepository repository;
+        private readonly Lazy<IGetAllContactsCommand> getAllContactsCommand;
 
-        public ContactController(IContactRepository repo)
+        public ContactController(
+            Lazy<IGetAllContactsCommand> getAllContactsCommand,
+            IContactRepository repository)
         {
-            repository = repo;
+            this.getAllContactsCommand = getAllContactsCommand;
+            this.repository = repository;
         }
 
         // GET: api/<controller>
         [HttpGet]
-        public IActionResult GetAllContacts()
-        {
-            var contacts = repository.GetContacts.OrderBy(p => p.ID);
-
-            return new OkObjectResult(contacts);
-        }
+        public IActionResult GetAllContacts() => 
+            getAllContactsCommand.Value.Execute();
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
@@ -57,7 +58,7 @@ namespace SolsticeApi.Controllers
 
         // GET api/<controller>/location/New York
         [HttpGet("location/{address}")]
-        public IActionResult GetContactsByAddLocation(string address)
+        public IActionResult GetContactsByLocation(string address)
         {
             if (address == null)
             {
