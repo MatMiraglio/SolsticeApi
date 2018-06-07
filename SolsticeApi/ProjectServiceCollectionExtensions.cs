@@ -10,7 +10,9 @@ namespace SolsticeApi
         public static IServiceCollection AddProjectCommands(this IServiceCollection services) =>
             services
                 .AddSingleton<IGetAllContactsCommand, GetAllContactsCommand>()
-                .AddSingleton(x => new Lazy<IGetAllContactsCommand>(() => x.GetRequiredService<IGetAllContactsCommand>()));
+                .AddSingleton(x => new Lazy<IGetAllContactsCommand>(() => x.GetRequiredService<IGetAllContactsCommand>()))
+                .AddSingleton<IGetContactByIdCommand, GetContactByIdCommand>()
+                .AddSingleton(x => new Lazy<IGetContactByIdCommand>(() => x.GetRequiredService<IGetContactByIdCommand>()));
 
     }
 }

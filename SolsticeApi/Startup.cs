@@ -52,6 +52,7 @@ namespace SolsticeApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseMvc();
 
             SeedData.EnsurePopulated(app);

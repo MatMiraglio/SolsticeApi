@@ -12,14 +12,19 @@ namespace SolsticeApi.Controllers
     [Route("api/[controller]")]
     public class ContactController : ControllerBase
     {
-        private readonly IContactRepository repository;
         private readonly Lazy<IGetAllContactsCommand> getAllContactsCommand;
+        private readonly Lazy<IGetContactByIdCommand> getContactByIdCommand;
+
+        private readonly IContactRepository repository;
 
         public ContactController(
             Lazy<IGetAllContactsCommand> getAllContactsCommand,
+            Lazy<IGetContactByIdCommand> getContactByIdCommand,
             IContactRepository repository)
         {
             this.getAllContactsCommand = getAllContactsCommand;
+            this.getContactByIdCommand = getContactByIdCommand;
+
             this.repository = repository;
         }
 
@@ -30,12 +35,8 @@ namespace SolsticeApi.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public IActionResult GetContactById(int id)
-        {
-            var contact = repository.GetContacts.Where(p => p.ID == id);
-
-            return Ok(contact);
-        }
+        public IActionResult GetContactById(int id) =>
+            getContactByIdCommand.Value.Execute(id);
 
         // GET api/<controller>/phone/11 9 1234 111
         [HttpGet("phone/{phoneNumber}")]
