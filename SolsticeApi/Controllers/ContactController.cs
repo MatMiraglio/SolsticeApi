@@ -50,19 +50,19 @@ namespace SolsticeApi.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public IActionResult GetContactById(int id) =>
+        public IActionResult GetContactById([FromRoute]int id) =>
             this.getContactByIdCommand.Value.Execute(id);
 
 
         // GET api/<controller>/phone/1191234111
         [HttpGet("phone/{phoneNumber}")]
-        public IActionResult GetContactByPhoneNumer(string phoneNumber) =>
+        public IActionResult GetContactByPhoneNumer([FromRoute]string phoneNumber) =>
             this.getContactByPhoneNumerCommand.Value.Execute(phoneNumber);
 
 
         // GET api/<controller>/location/New York
         [HttpGet("location/{address}")]
-        public IActionResult GetContactsByLocation(string address) =>
+        public IActionResult GetContactsByLocation([FromRoute]string address) =>
             this.getContactsByLocationCommand.Value.Execute(address);
 
 
@@ -74,13 +74,13 @@ namespace SolsticeApi.Controllers
 
         // PUT api/<controller>/5
         [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateContact(int id, [FromBody]Contact contact) =>
+        public async Task<IActionResult> UpdateContact([FromRoute]int id, [FromBody]Contact contact) =>
             await this.updateContactCommand.Value.Execute(id, contact);
 
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteContact(int id) =>
+        public IActionResult DeleteContact([FromRoute]int id) =>
             this.deleteContactCommand.Value.Execute(id);
     }
 }
