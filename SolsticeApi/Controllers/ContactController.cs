@@ -14,107 +14,73 @@ namespace SolsticeApi.Controllers
     {
         private readonly Lazy<IGetAllContactsCommand> getAllContactsCommand;
         private readonly Lazy<IGetContactByIdCommand> getContactByIdCommand;
+        private readonly Lazy<IGetContactByPhoneNumerCommand> getContactByPhoneNumerCommand;
+        private readonly Lazy<IGetContactsByLocationCommand> getContactsByLocationCommand;
+        private readonly Lazy<ICreateContactCommand> createContactCommand;
+        private readonly Lazy<IUpdateContactCommand> updateContactCommand;
+        private readonly Lazy<IDeleteContactCommand> deleteContactCommand;
 
         private readonly IContactRepository repository;
 
         public ContactController(
             Lazy<IGetAllContactsCommand> getAllContactsCommand,
             Lazy<IGetContactByIdCommand> getContactByIdCommand,
+            Lazy<IGetContactByPhoneNumerCommand> getContactByPhoneNumerCommand,
+            Lazy<IGetContactsByLocationCommand> getContactsByLocationCommand,
+            Lazy<ICreateContactCommand> createContactCommand,
+            Lazy<IUpdateContactCommand> updateContactCommand,
+            Lazy<IDeleteContactCommand> deleteContactCommand,
             IContactRepository repository)
         {
             this.getAllContactsCommand = getAllContactsCommand;
             this.getContactByIdCommand = getContactByIdCommand;
-
+            this.getContactByPhoneNumerCommand = getContactByPhoneNumerCommand;
+            this.getContactsByLocationCommand = getContactsByLocationCommand;
+            this.createContactCommand = createContactCommand;
+            this.updateContactCommand = updateContactCommand;
+            this.deleteContactCommand = deleteContactCommand;
             this.repository = repository;
         }
 
         // GET: api/<controller>
         [HttpGet]
         public IActionResult GetAllContacts() => 
-            getAllContactsCommand.Value.Execute();
+            this.getAllContactsCommand.Value.Execute();
+
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public IActionResult GetContactById(int id) =>
-            getContactByIdCommand.Value.Execute(id);
+            this.getContactByIdCommand.Value.Execute(id);
 
-        // GET api/<controller>/phone/11 9 1234 111
+
+        // GET api/<controller>/phone/1191234111
         [HttpGet("phone/{phoneNumber}")]
-        public IActionResult GetContactByPhoneNumer(string phoneNumber)
-        {
-            if (phoneNumber == null)
-            {
-                return BadRequest();
-            }
-            var contact  = repository.GetContacts.Single(p => p.PhoneNumberHome == phoneNumber || 
-                p.PhoneNumberWork == phoneNumber);
+        public IActionResult GetContactByPhoneNumer(string phoneNumber) =>
+            this.getContactByPhoneNumerCommand.Value.Execute(phoneNumber);
 
-            if (contact == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(contact);
-        }
 
         // GET api/<controller>/location/New York
         [HttpGet("location/{address}")]
-        public IActionResult GetContactsByLocation(string address)
-        {
-            if (address == null)
-            {
-                return BadRequest();
-            }
+        public IActionResult GetContactsByLocation(string address) =>
+            this.getContactsByLocationCommand.Value.Execute(address);
 
-            var contacts = repository.GetContacts.Where(p => p.Address.Contains(address));
-
-            return Ok(contacts);
-        }
 
         // POST api/<controller>
         [HttpPost]
-        public async Task<IActionResult> CreateContact([FromBody]Contact newContact)
-        {
-            if (newContact == null)
-            {
-                return BadRequest();
-            }
+        public async Task<IActionResult> CreateContact([FromBody]Contact newContact) =>
+            await this.createContactCommand.Value.Execute(newContact);
 
-            int newContactID = await repository.AddContact(newContact);
-            return CreatedAtAction("GetContactById", new { id = newContactID }, newContact);
-        }
 
         // PUT api/<controller>/5
         [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateContact(int id, [FromBody]Contact contact)
-        {
-            var existingContact = repository.Find(id);
-            if (existingContact == null)
-            {
-                return new NotFoundResult();
-            }
+        public async Task<IActionResult> UpdateContact(int id, [FromBody]Contact contact) =>
+            await this.updateContactCommand.Value.Execute(id, contact);
 
-            contact.ID = existingContact.ID;
-
-            contact = await repository.UpdateContact(contact);
-
-            return Ok(contact);
-        }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public  IActionResult DeleteContact(int id)
-        {
-            var contact = repository.GetContacts.Single(p => p.ID == id);
-
-            if (contact == null)
-            {
-                return NotFound();
-            }
-
-            repository.DeleteContact(contact);
-
-            return Ok(contact);
-        }
+        public IActionResult DeleteContact(int id) =>
+            this.deleteContactCommand.Value.Execute(id);
     }
 }
