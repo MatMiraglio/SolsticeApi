@@ -26,8 +26,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic1",
                     Email = "Bobjohnson@gmail.com",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 111",
-                    PhoneNumberHome = "424 1111",
+                    PhoneNumberWork = "1191234111",
+                    PhoneNumberHome = "4241111",
                     Address = "1111 Saddle Dr",
                 },
                 new Contact
@@ -37,8 +37,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic2",
                     Email = "Bobjohnson@gmail.com2",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 222",
-                    PhoneNumberHome = "424 2222",
+                    PhoneNumberWork = "1191234222",
+                    PhoneNumberHome = "4242222",
                     Address = "2222 Saddle Dr",
                 },
                 new Contact
@@ -48,8 +48,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic3",
                     Email = "Bobjohnson@gmail.com3",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 333",
-                    PhoneNumberHome = "424 3333",
+                    PhoneNumberWork = "1191234333",
+                    PhoneNumberHome = "4243333",
                     Address = "3333 Saddle Dr",
                 },
                 new Contact
@@ -59,8 +59,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic4",
                     Email = "Bobjohnson@gmail.com4",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 444",
-                    PhoneNumberHome = "424 4444",
+                    PhoneNumberWork = "1191234444",
+                    PhoneNumberHome = "4244444",
                     Address = "4444 Saddle Dr",
                 },
                 new Contact
@@ -70,8 +70,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic5",
                     Email = "Bobjohnson@gmail.com5",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 555",
-                    PhoneNumberHome = "424 5555",
+                    PhoneNumberWork = "1191234555",
+                    PhoneNumberHome = "4245555",
                     Address = "5555 Saddle Dr",
                 },
                 new Contact
@@ -81,8 +81,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic6",
                     Email = "Bobjohnson@gmail.com",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 666",
-                    PhoneNumberHome = "424 6666",
+                    PhoneNumberWork = "1191234666",
+                    PhoneNumberHome = "4246666",
                     Address = "6666 Saddle Dr",
                 },
                 new Contact
@@ -92,8 +92,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic7",
                     Email = "Bobjohnson@gmail.com7",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 777",
-                    PhoneNumberHome = "424 7777",
+                    PhoneNumberWork = "1191234777",
+                    PhoneNumberHome = "4247777",
                     Address = "7777 Saddle Dr",
                 },
                 new Contact
@@ -103,8 +103,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic8",
                     Email = "Bobjohnson@gmail.com8",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 888",
-                    PhoneNumberHome = "424 8888",
+                    PhoneNumberWork = "1191234888",
+                    PhoneNumberHome = "4248888",
                     Address = "8888 Saddle Dr",
                 },
                 new Contact
@@ -114,8 +114,8 @@ namespace SolsticeApi.Models
                     ProfilePicFileName = "ProfilePic9",
                     Email = "Bobjohnson@gmail.com9",
                     BirthDay = new DateTime(1981, 1, 11),
-                    PhoneNumberWork = "11 9 1234 999",
-                    PhoneNumberHome = "424 9999",
+                    PhoneNumberWork = "1191234999",
+                    PhoneNumberHome = "4249999",
                     Address = "9999 Saddle Dr",
                 });
 
