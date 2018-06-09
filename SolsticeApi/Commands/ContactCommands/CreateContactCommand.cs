@@ -30,7 +30,9 @@ namespace SolsticeApi.Commands.ContactCommands
                 return new BadRequestResult();
             }
 
+            // The AddContact method returns the ID of the newly added contact as an int
             int newContactID = await contactRepository.AddContact(newContact);
+
             return new CreatedAtActionResult("GetContactById", "Contact", new { id = newContactID }, newContact);
         }
 
