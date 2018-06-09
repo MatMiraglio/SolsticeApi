@@ -27,8 +27,8 @@ namespace SolsticeApi.Commands.ContactCommands
             {
                 return new BadRequestResult();
             }
-            var contact = contactRepository.GetContacts.Single(p => p.PhoneNumberHome == phoneNumber ||
-               p.PhoneNumberWork == phoneNumber);
+            var contact = contactRepository.GetContacts.Where(p => p.PhoneNumberHome.Contains(phoneNumber) ||
+               p.PhoneNumberWork.Contains(phoneNumber));
 
             if (contact == null)
             {
