@@ -1,0 +1,28 @@
+How to consume this API:
+
+Type of Request:            URL:                                     Effect:
+GET             rootdomain/api/contact                   Returns all Contacts
+GET             rootdomain/api/contact/5                 Returns Contact with id 5
+
+
+must provide a string in the url with the complete or partial address/city/state.
+GET             rootdomain/api/contact/location/denver   Returns all contacts that contain "denver" in their address 
+
+
+must provide a phone number or segment of phone number without spaces or characters.
+GET             rootdomain/api/contact/phone/12345       Return all contacts with the secuence 12345 on one of their phones      
+
+
+must send the contact information in the body of the request as Json object. missing fields will be set to null.
+POST            rootdomain/api/contact                   Creates a new contact and returns it with a newly asigned id
+ 
+
+must provide contact information in the body of the request as Json object and an id in the url.
+all of the contact's data must be provided otherwise fields will be set to null.
+PATCH           rootdomain/api/contact/3                 Updates the contact contact record of id 3
+
+
+must provide id number in the url
+DEL             rootdomain/api/contact/7                 Deletes contact with id 7 and returns all the contact data that was deleted
+
+
