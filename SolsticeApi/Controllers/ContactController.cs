@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using SolsticeApi.Models;
 using SolsticeApi.Repositories;
 using SolsticeApi.Commands.ContactCommands;
+using Microsoft.AspNetCore.Http;
+using SolsticeApi.Commands.ContactCommands.Interfaces;
 
 namespace SolsticeApi.Controllers
 {
@@ -19,7 +21,7 @@ namespace SolsticeApi.Controllers
         private readonly Lazy<ICreateContactCommand> createContactCommand;
         private readonly Lazy<IUpdateContactCommand> updateContactCommand;
         private readonly Lazy<IDeleteContactCommand> deleteContactCommand;
-
+        private readonly Lazy<IUploadProfilePictureCommand> uploadProfilePictureCommand;
         private readonly IContactRepository repository;
 
         public ContactController(
@@ -30,6 +32,7 @@ namespace SolsticeApi.Controllers
             Lazy<ICreateContactCommand> createContactCommand,
             Lazy<IUpdateContactCommand> updateContactCommand,
             Lazy<IDeleteContactCommand> deleteContactCommand,
+            Lazy<IUploadProfilePictureCommand> uploadProfilePictureCommand,
             IContactRepository repository)
         {
             this.getAllContactsCommand = getAllContactsCommand;
@@ -39,6 +42,7 @@ namespace SolsticeApi.Controllers
             this.createContactCommand = createContactCommand;
             this.updateContactCommand = updateContactCommand;
             this.deleteContactCommand = deleteContactCommand;
+            this.uploadProfilePictureCommand = uploadProfilePictureCommand;
             this.repository = repository;
         }
 
@@ -72,7 +76,14 @@ namespace SolsticeApi.Controllers
             await this.createContactCommand.Value.Execute(newContact);
 
 
-        // PUT api/<controller>/5
+        // PATCH api/<controller>/5
+        [Route("api/[controller]/{id}/ProfileImage")]
+        [HttpPost("{id}/ProfileImage")]
+        public IActionResult UploadProfilePicture([FromRoute]int id, IFormFile profilePictureFile) =>
+             this.uploadProfilePictureCommand.Value.Execute(id, profilePictureFile);
+
+
+        // PATCH api/<controller>/5
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateContact([FromRoute]int id, [FromBody]Contact contact) =>
             await this.updateContactCommand.Value.Execute(id, contact);

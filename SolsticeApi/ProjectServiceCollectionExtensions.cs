@@ -2,6 +2,7 @@
 using SolsticeApi.Commands.ContactCommands;
 using Microsoft.Extensions.DependencyInjection;
 using SolsticeApi.Commands;
+using SolsticeApi.Commands.ContactCommands.Interfaces;
 
 namespace SolsticeApi
 {
@@ -22,7 +23,9 @@ namespace SolsticeApi
                 .AddSingleton<IUpdateContactCommand, UpdateContactCommand>()
                 .AddSingleton(x => new Lazy<IUpdateContactCommand>(() => x.GetRequiredService<IUpdateContactCommand>()))
                 .AddSingleton<IDeleteContactCommand, DeleteContactCommand>()
-                .AddSingleton(x => new Lazy<IDeleteContactCommand>(() => x.GetRequiredService<IDeleteContactCommand>()));
+                .AddSingleton(x => new Lazy<IDeleteContactCommand>(() => x.GetRequiredService<IDeleteContactCommand>()))
+                .AddSingleton<IUploadProfilePictureCommand, UploadProfilePictureCommand>()
+                .AddSingleton(x => new Lazy<IUploadProfilePictureCommand>(() => x.GetRequiredService<IUploadProfilePictureCommand>()));
 
     }
 }

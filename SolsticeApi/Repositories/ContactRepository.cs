@@ -1,4 +1,6 @@
-﻿using SolsticeApi.DbContexts;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using SolsticeApi.DbContexts;
 using SolsticeApi.Models;
 using System;
 using System.Collections.Generic;
@@ -40,7 +42,6 @@ namespace SolsticeApi.Repositories
 
             existingContact.Name = contact.Name;
             existingContact.Company = contact.Company;
-            existingContact.ProfilePicFileName = contact.ProfilePicFileName;
             existingContact.PhoneNumberWork = contact.PhoneNumberWork;
             existingContact.PhoneNumberHome = contact.PhoneNumberHome;
             existingContact.Email = contact.Email;
@@ -50,6 +51,15 @@ namespace SolsticeApi.Repositories
             await context.SaveChangesAsync();
 
             return existingContact;
+        }
+        public void SaveProfilePicName(int id)
+        {
+            var existingContact = GetContacts.FirstOrDefault(p => p.ID == id);
+
+            existingContact.ProfilePicFileName = "ProfilePic" + id;
+
+            context.SaveChanges();
+
         }
     }
 }

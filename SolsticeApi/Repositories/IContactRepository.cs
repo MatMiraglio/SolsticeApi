@@ -1,4 +1,6 @@
-﻿using SolsticeApi.Models;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using SolsticeApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +15,6 @@ namespace SolsticeApi.Repositories
         Task<int> AddContact(Contact newContact);
         void DeleteContact(Contact contact);
         Task<Contact> UpdateContact(Contact contactToUpdate);
+        void SaveProfilePicName(int id);
     }
 }
