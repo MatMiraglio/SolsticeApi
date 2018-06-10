@@ -17,8 +17,7 @@ The use of Dependency Injection and the Command Design Pattern makes it easy to 
 To Do List:
 1. Add authentication
 2. Add integration with Swagger(Open API) for documentation
-3. Add functionality to upload pictures
-4. Add JSON-PATCH option
+3. Add JSON-PATCH option
 
 
 This application can be tested using Visual Studio Community 2017 and Postman, a popular application to develop and test APIs.
