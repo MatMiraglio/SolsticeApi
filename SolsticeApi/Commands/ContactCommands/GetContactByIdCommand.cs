@@ -24,7 +24,7 @@ namespace SolsticeApi.Commands.ContactCommands
 
         public IActionResult Execute(int id)
         {
-            var contact = contactRepository.GetContacts.Single(p => p.ID == id);
+            var contact = contactRepository.GetContacts.SingleOrDefault(p => p.ID == id);
 
             if (contact == null)
             {
