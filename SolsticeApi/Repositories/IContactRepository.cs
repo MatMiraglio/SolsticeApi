@@ -15,6 +15,6 @@ namespace SolsticeApi.Repositories
         Task<int> AddContact(Contact newContact);
         void DeleteContact(Contact contact);
         Task<Contact> UpdateContact(Contact contactToUpdate);
-        void SaveProfilePicName(int id);
+        void SaveProfilePicName(int id, string fileName);
     }
 }

@@ -52,11 +52,11 @@ namespace SolsticeApi.Repositories
 
             return existingContact;
         }
-        public void SaveProfilePicName(int id)
+        public void SaveProfilePicName(int id, string fileName)
         {
-            var existingContact = GetContacts.FirstOrDefault(p => p.ID == id);
+            var existingContact = GetContacts.SingleOrDefault(p => p.ID == id);
 
-            existingContact.ProfilePicFileName = "ProfilePic" + id;
+            existingContact.ProfilePicFileName = fileName;
 
             context.SaveChanges();
 
