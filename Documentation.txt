@@ -1,5 +1,8 @@
 How to consume this API:
 
+For the time beign this api does not implement validation properties in the model, such as [phone] or [email]
+as the specifacations of the project are yet unknown. The front end developer is free (for the moment) to store whatever data he pleases in the database.
+
 Type of Request:            URL:                                     Effect:
 GET             rootdomain/api/contact                   Returns all Contacts
 GET             rootdomain/api/contact/5                 Returns Contact with id 5
