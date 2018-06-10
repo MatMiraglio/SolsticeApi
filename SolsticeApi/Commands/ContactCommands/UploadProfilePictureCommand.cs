@@ -48,19 +48,15 @@ namespace SolsticeApi.Commands.ContactCommands
                 string fileDestineLocation = Path.Combine(profilePicturesFolderPath, fileName);
 
                 profilePictureFile.CopyTo(new FileStream(fileDestineLocation, FileMode.Create));
+
+                contactRepository.SaveProfilePicName(id, fileName);
             }
             else
             {
                 return new BadRequestResult();
             }
 
-            if (existingContact.ProfilePicFileName == null)
-            {
-                contactRepository.SaveProfilePicName(id);
-            }
-
             return new OkResult();
-          
         }
     }
 }
