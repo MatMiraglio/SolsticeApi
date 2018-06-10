@@ -1,6 +1,6 @@
 # SolsticeApi
 
-API Built with:
+API Using:
 1. C#
 2. ASP.NET Core 2.0 MVC
 3. Entity Framework Core
