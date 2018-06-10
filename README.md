@@ -1,15 +1,17 @@
 # SolsticeApi
 
 API Built with:
-C#
-ASP.NET Core 2.0 MVC
-Entity Framework Core
-SQL Server 2016
-IIS 10
-Command Design Pattern
-Dependency Injection
+1. C#
+2. ASP.NET Core 2.0 MVC
+3. Entity Framework Core
+4. SQL Server 2016
+5. IIS 10
+6. Command Design Pattern
+7. Dependency Injection
 
 This is a simple api with loosly coupled components, easy to expand and modify.
+
+
 The use of Dependency Injection and the Command Design Pattern makes it easy to write unit test for the application.
 
 To Do List:
