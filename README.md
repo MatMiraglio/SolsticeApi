@@ -13,15 +13,16 @@ This is a simple api with loosly coupled components, easy to expand and modify.
 The use of Dependency Injection and the Command Design Pattern makes it easy to write unit test for the application.
 
 To Do List:
-Add authentication
-Add integration with Swagger(Open API) for documentation
-Add functionality to upload pictures
-Add JSON-PATCH option
+1. Add authentication
+2. Add integration with Swagger(Open API) for documentation
+3. Add functionality to upload pictures
+4. Add JSON-PATCH option
 
 
 This application can be tested using Visual Studio Community 2017 and Postman, a popular application to develop and test APIs.
 
 Visual Studio Community 2017: www.visualstudio.com/vs/community/
+
 Postman: https://www.getpostman.com
 
 How to Test:
