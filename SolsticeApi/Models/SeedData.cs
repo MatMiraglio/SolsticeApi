@@ -23,7 +23,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 1",
                     Company = "Microsoft",
-                    ProfilePicFileName = "ProfilePic1",
                     Email = "Bobjohnson@gmail.com",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234111",
@@ -34,7 +33,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 2",
                     Company = "Microsoft 2",
-                    ProfilePicFileName = "ProfilePic2",
                     Email = "Bobjohnson@gmail.com2",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234222",
@@ -45,7 +43,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 3",
                     Company = "Microsoft3",
-                    ProfilePicFileName = "ProfilePic3",
                     Email = "Bobjohnson@gmail.com3",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234333",
@@ -56,7 +53,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 4",
                     Company = "Microsoft4",
-                    ProfilePicFileName = "ProfilePic4",
                     Email = "Bobjohnson@gmail.com4",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234444",
@@ -67,7 +63,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 5",
                     Company = "Microsoft5",
-                    ProfilePicFileName = "ProfilePic5",
                     Email = "Bobjohnson@gmail.com5",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234555",
@@ -78,7 +73,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 6",
                     Company = "Microsoft6",
-                    ProfilePicFileName = "ProfilePic6",
                     Email = "Bobjohnson@gmail.com",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234666",
@@ -89,7 +83,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 7",
                     Company = "Microsoft7",
-                    ProfilePicFileName = "ProfilePic7",
                     Email = "Bobjohnson@gmail.com7",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234777",
@@ -100,7 +93,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 8",
                     Company = "Microsoft8",
-                    ProfilePicFileName = "ProfilePic8",
                     Email = "Bobjohnson@gmail.com8",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234888",
@@ -111,7 +103,6 @@ namespace SolsticeApi.Models
                 {
                     Name = "Bob Johnson 9",
                     Company = "Microsoft9",
-                    ProfilePicFileName = "ProfilePic9",
                     Email = "Bobjohnson@gmail.com9",
                     BirthDay = new DateTime(1981, 1, 11),
                     PhoneNumberWork = "1191234999",
