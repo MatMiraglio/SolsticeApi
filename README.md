@@ -1,6 +1,6 @@
 # SolsticeApi
 
-API Using:
+API Built Using:
 1. C#
 2. ASP.NET Core 2.0 MVC
 3. Entity Framework Core
@@ -12,7 +12,7 @@ API Using:
 This is a simple api with loosly coupled components, easy to expand and modify.
 
 
-The use of Dependency Injection and the Command Design Pattern makes it easy to write unit test for the application.
+The usage of Dependency Injection and Command Design Pattern facilitates the writing if unit test for the application.
 
 To Do List:
 1. Add authentication
