@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SolsticeApi.Models;
-using SolsticeApi.Repositories;
 using SolsticeApi.Commands.ContactCommands;
 using Microsoft.AspNetCore.Http;
 using SolsticeApi.Commands.ContactCommands.Interfaces;
@@ -22,7 +21,6 @@ namespace SolsticeApi.Controllers
         private readonly Lazy<IUpdateContactCommand> updateContactCommand;
         private readonly Lazy<IDeleteContactCommand> deleteContactCommand;
         private readonly Lazy<IUploadProfilePictureCommand> uploadProfilePictureCommand;
-        private readonly IContactRepository repository;
 
         public ContactController(
             Lazy<IGetAllContactsCommand> getAllContactsCommand,
@@ -32,8 +30,8 @@ namespace SolsticeApi.Controllers
             Lazy<ICreateContactCommand> createContactCommand,
             Lazy<IUpdateContactCommand> updateContactCommand,
             Lazy<IDeleteContactCommand> deleteContactCommand,
-            Lazy<IUploadProfilePictureCommand> uploadProfilePictureCommand,
-            IContactRepository repository)
+            Lazy<IUploadProfilePictureCommand> uploadProfilePictureCommand)
+
         {
             this.getAllContactsCommand = getAllContactsCommand;
             this.getContactByIdCommand = getContactByIdCommand;
@@ -43,7 +41,6 @@ namespace SolsticeApi.Controllers
             this.updateContactCommand = updateContactCommand;
             this.deleteContactCommand = deleteContactCommand;
             this.uploadProfilePictureCommand = uploadProfilePictureCommand;
-            this.repository = repository;
         }
 
         // GET: api/<controller>
@@ -76,7 +73,7 @@ namespace SolsticeApi.Controllers
             await this.createContactCommand.Value.Execute(newContact);
 
 
-        // PATCH api/<controller>/5
+        // PATCH api/<controller>/5/ProfileImage
         [Route("api/[controller]/{id}/ProfileImage")]
         [HttpPost("{id}/ProfileImage")]
         public IActionResult UploadProfilePicture([FromRoute]int id, IFormFile profilePictureFile) =>

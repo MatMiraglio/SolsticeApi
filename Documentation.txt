@@ -18,7 +18,13 @@ GET             rootdomain/api/contact/phone/12345       Return all contacts wit
 
 must send the contact information in the body of the request as Json object. missing fields will be set to null.
 POST            rootdomain/api/contact                   Creates a new contact and returns it with a newly asigned id
- 
+
+
+must send the image in the body of the request as form-data with the key "profilePictureFile".
+images can be retrived at rootdomain/profilepictures/profilepic8.jpg
+Issue: to retrieve the image the client must know the extension of the file, which is impractical. This will be fixed shortly.
+POST            rootdomain/api/contact/8/ProfileImage    Saves a profile picture associated with the contact with id 8 and saves it as profilepic{id}.jpg here(profilepic8.jpg) at rootdomain/profilepictures/profilepic8.jpg 
+
 
 must provide contact information in the body of the request as Json object and an id in the url.
 all of the contact's data must be provided otherwise fields will be set to null.

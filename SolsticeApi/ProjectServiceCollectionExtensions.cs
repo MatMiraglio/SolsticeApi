@@ -27,5 +27,6 @@ namespace SolsticeApi
                 .AddSingleton<IUploadProfilePictureCommand, UploadProfilePictureCommand>()
                 .AddSingleton(x => new Lazy<IUploadProfilePictureCommand>(() => x.GetRequiredService<IUploadProfilePictureCommand>()));
 
+
     }
 }
