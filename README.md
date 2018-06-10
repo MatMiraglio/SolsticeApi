@@ -30,7 +30,7 @@ How to Test:
 3. Launch the application with Ctrl + F5.
 4. Test the http requests.
 
-How to consume this API:
+How to consume this API (see as raw):
 
 Type of Request:    URL:                                                Effect:
 GET                 http://localhost:#####/api/contact                  Returns all Contacts
