@@ -12,7 +12,7 @@ API Built Using:
 This is a simple api with loosly coupled components, easy to expand and modify.
 
 
-The usage of Dependency Injection and Command Design Pattern facilitates the writing if unit test for the application.
+The usage of Dependency Injection and Command Design Pattern facilitates the writing of unit test for the application.
 
 To Do List:
 1. Add authentication
