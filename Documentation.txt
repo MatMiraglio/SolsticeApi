@@ -22,7 +22,7 @@ POST            rootdomain/api/contact                   Creates a new contact a
 
 must send the image in the body of the request as form-data with the key "profilePictureFile".
 images can be retrived at rootdomain/profilepictures/profilepic8.jpg
-Issue: to retrieve the image the client must know the extension of the file, which is impractical. This will be fixed shortly.
+Issue: to retrieve the image the client must know the extension of the file, this can be done by performing a GET request and looking at the "profilePicFileName" key-value pair.
 POST            rootdomain/api/contact/8/ProfileImage    Saves a profile picture associated with the contact with id 8 and saves it as profilepic{id}.jpg here(profilepic8.jpg) at rootdomain/profilepictures/profilepic8.jpg 
 
 
