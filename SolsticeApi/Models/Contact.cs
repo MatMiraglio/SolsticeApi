@@ -9,7 +9,6 @@ namespace SolsticeApi.Models
     public class Contact
     {
         public int ID { get; set; }
-        [Required]
         public string Name { get; set; }
         public string Company { get; set; }
         public string ProfilePicFileName { get; set; }
