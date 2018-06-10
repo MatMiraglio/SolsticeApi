@@ -31,7 +31,7 @@ How to Test:
 1. Download or clone project.
 2. Open it on Visual Studio.
 3. Launch the application with Ctrl + F5.
-4. Test the http requests.
+4. Test the http requests using Postman (Postman documentation: https://www.getpostman.com/docs/v6/).
 
 How to consume this API: See Documentation.txt File
 
