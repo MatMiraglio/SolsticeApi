@@ -32,6 +32,6 @@ PATCH           rootdomain/api/contact/3                 Updates the contact con
 
 
 must provide id number in the url
-DEL             rootdomain/api/contact/7                 Deletes contact with id 7 and returns all the contact data that was deleted
+DEL             rootdomain/api/contact/7                 Deletes contact with id 7 and the associated image, and returns all the contact data that was deleted
 
 

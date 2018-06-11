@@ -1,6 +1,6 @@
 # SolsticeApi
 
-API Using:
+API Built Using:
 1. C#
 2. ASP.NET Core 2.0 MVC
 3. Entity Framework Core
@@ -12,14 +12,14 @@ API Using:
 This is a simple api with loosly coupled components, easy to expand and modify.
 
 
-The use of Dependency Injection and the Command Design Pattern makes it easy to write unit test for the application.
+The usage of Dependency Injection and Command Design Pattern facilitates the writing of unit test for the application.
 
 To Do List:
 1. Add authentication
 2. Add integration with Swagger(Open API) for documentation
-3. Add functionality to upload pictures
-4. Add JSON-PATCH option
-
+3. Add JSON-PATCH option
+4. Add ViewModels and Mapping for improved security
+5. Write unit tests
 
 This application can be tested using Visual Studio Community 2017 and Postman, a popular application to develop and test APIs.
 
