@@ -18,7 +18,7 @@ To Do List:
 1. Add authentication
 2. Add integration with Swagger(Open API) for documentation
 3. Add JSON-PATCH option
-
+4. Add ViewModels and Mapping for improved security
 
 This application can be tested using Visual Studio Community 2017 and Postman, a popular application to develop and test APIs.
 
