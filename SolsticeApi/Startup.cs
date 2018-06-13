@@ -14,6 +14,8 @@ using SolsticeApi.DbContexts;
 using SolsticeApi.Models;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Http;
+using AutoMapper;
+using SolsticeApi.Mappers;
 
 namespace SolsticeApi
 {
@@ -36,6 +38,7 @@ namespace SolsticeApi
             services.AddSingleton<IContactRepository, ContactRepository>();
 
             services.AddMvc();
+            services.AddAutoMapper(x => x.AddProfile(new ContactMapper()));
             services
                 .AddProjectCommands()
                 // Add useful interface for accessing the ActionContext outside a controller.
