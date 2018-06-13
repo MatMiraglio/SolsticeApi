@@ -7,6 +7,7 @@ using SolsticeApi.Models;
 using SolsticeApi.Commands.ContactCommands;
 using Microsoft.AspNetCore.Http;
 using SolsticeApi.Commands.ContactCommands.Interfaces;
+using SolsticeApi.ViewModels;
 
 namespace SolsticeApi.Controllers
 {
@@ -69,7 +70,7 @@ namespace SolsticeApi.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public async Task<IActionResult> CreateContact([FromBody]Contact newContact) =>
+        public async Task<IActionResult> CreateContact([FromBody]SaveContact newContact) =>
             await this.createContactCommand.Value.Execute(newContact);
 
 
@@ -82,7 +83,7 @@ namespace SolsticeApi.Controllers
 
         // PATCH api/<controller>/5
         [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateContact([FromRoute]int id, [FromBody]Contact contact) =>
+        public async Task<IActionResult> UpdateContact([FromRoute]int id, [FromBody]Models.Contact contact) =>
             await this.updateContactCommand.Value.Execute(id, contact);
 
 

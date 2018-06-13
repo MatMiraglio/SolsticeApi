@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SolsticeApi.Models;
+using SolsticeApi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace SolsticeApi.Commands.ContactCommands
 {
     public interface ICreateContactCommand
     {
-        Task<IActionResult> Execute(Contact newContact);
+        Task<IActionResult> Execute(SaveContact newContact);
     }
 }
