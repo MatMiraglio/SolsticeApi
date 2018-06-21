@@ -8,6 +8,6 @@ namespace SolsticeApi.Commands.ContactCommands
 {
     public interface IGetContactByPhoneNumerCommand
     {
-        IActionResult Execute(string phoneNumber);
+        Task<IActionResult> Execute(string phoneNumber);
     }
 }

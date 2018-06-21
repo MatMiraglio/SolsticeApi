@@ -58,8 +58,8 @@ namespace SolsticeApi.Controllers
 
         // GET api/<controller>/phone/1191234111
         [HttpGet("phone/{phoneNumber}")]
-        public IActionResult GetContactByPhoneNumer([FromRoute]string phoneNumber) =>
-            this.getContactByPhoneNumerCommand.Value.Execute(phoneNumber);
+        public async Task<IActionResult> GetContactByPhoneNumer([FromRoute]string phoneNumber) =>
+            await this.getContactByPhoneNumerCommand.Value.Execute(phoneNumber);
 
 
         // GET api/<controller>/location/New York
@@ -71,7 +71,7 @@ namespace SolsticeApi.Controllers
         // POST api/<controller>
         [HttpPost]
         public async Task<IActionResult> CreateContact([FromBody]SaveContact newContact) =>
-            await this.createContactCommand.Value.Execute(newContact);
+            await this.createContactCommand.Value.ExecuteAsync(newContact);
 
 
         // PATCH api/<controller>/5/ProfileImage

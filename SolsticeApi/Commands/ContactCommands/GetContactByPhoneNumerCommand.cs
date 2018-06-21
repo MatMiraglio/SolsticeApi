@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using SolsticeApi.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,32 +12,34 @@ namespace SolsticeApi.Commands.ContactCommands
 {
     public class GetContactByPhoneNumerCommand : IGetContactByPhoneNumerCommand
     {
-        private readonly IActionContextAccessor actionContextAccessor;
         private IContactRepository contactRepository;
+        private readonly IMapper contactMapper;
 
         public GetContactByPhoneNumerCommand(
             IContactRepository contactRepository,
-            IActionContextAccessor actionContextAccessor)
+            IMapper contactMapper)
         {
             this.contactRepository = contactRepository;
-            this.actionContextAccessor = actionContextAccessor;
+            this.contactMapper = contactMapper;
         }
 
-        public IActionResult Execute(string phoneNumber)
+        public async Task<IActionResult> Execute(string phoneNumber)
         {
             if (phoneNumber == null)
             {
                 return new BadRequestResult();
             }
-            var contact = contactRepository.GetContacts.Where(p => p.PhoneNumberHome.Contains(phoneNumber) ||
-               p.PhoneNumberWork.Contains(phoneNumber));
+            var contacts = await contactRepository.GetContacts.Where(p => p.PhoneNumberHome.Contains(phoneNumber) ||
+               p.PhoneNumberWork.Contains(phoneNumber)).ToListAsync();
 
-            if (contact == null)
+            var contactViewModel = Mapper.Map<List<ViewModels.Contact>>(contacts);
+
+            if (contactViewModel == null)
             {
                 return new NotFoundResult();
             }
 
-            return new OkObjectResult(contact);
+            return new OkObjectResult(contactViewModel);
         }
     }
 }
