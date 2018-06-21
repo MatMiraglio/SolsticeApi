@@ -28,18 +28,26 @@ namespace SolsticeApi.Commands.ContactCommands
         }
 
 
-        public async Task<IActionResult> Execute(SaveContact saveContact)
+        public async Task<IActionResult> ExecuteAsync(SaveContact saveContact)
         {
-            var newContact = contactMapper.Map<Models.Contact>(saveContact);
-            /*   
-               The AddContact method returns the ID of the newly added contact 
-               as an int and is stored in newContactID 
-            */
-            int newContactID = await contactRepository.AddContact(newContact);
+            if (actionContextAccessor.ActionContext.ModelState.IsValid)
+            {
+                var newContact = contactMapper.Map<Models.Contact>(saveContact);
+                /*   
+                   The AddContact method returns the ID of the newly added contact 
+                   as an int and is stored in newContactID 
+                */
+                int newContactID = await contactRepository.AddContact(newContact);
 
-            var newContactViewModel = contactMapper.Map<ViewModels.Contact>(newContact);
+                var newContactViewModel = contactMapper.Map<ViewModels.Contact>(newContact);
 
-            return new CreatedAtActionResult("GetContactById", "Contact", new { id = newContactID }, newContactViewModel);
+                return new CreatedAtActionResult("GetContactById", "Contact", new { id = newContactID }, newContactViewModel);
+            }
+            else
+            {
+                return new BadRequestResult();
+            }
+
         }
 
     }
